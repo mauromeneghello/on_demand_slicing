@@ -29,7 +29,7 @@ class TrafficSlicing(app_manager.RyuApp):
         
         self.print_flag = 0         # Helper variable that helps us with printing/output
           
-        subprocess.run(['python', 'gui.py'])
+        subprocess.run(['python3', 'gui.py'])
 
         # Source Mapping        
         self.port_to_port = {
