@@ -1,5 +1,6 @@
 import tkinter as tk
 from PIL import Image, ImageTk
+import subprocess
 
 # at the beginning all the buttons are setted too
 butt1 = 0
@@ -9,6 +10,7 @@ butt4 = 0
 dimx = 50
 dimy = 60
 
+#variabili rettangoli slice
 r1 = None
 r2 = None
 r3 = None
@@ -24,12 +26,16 @@ r10 = None
 r113 = None
 r114 = None
 
+#variabili slice se più slice su singolo host
 t71 = None
 t74 = None
 t83 = None
 t81 = None
 t113 = None
 t114 = None
+
+#vettore per vedere quali slice sono attive
+active_slices = [False for _ in range(4)]
 
 # rettangoli
 rettangoli = []
@@ -49,6 +55,9 @@ def button1_clicked():
         button1["text"] = "OFF 1"
 
         label1.configure(text="Slice 1: attivo")
+        
+        active_slices[0]=True
+        subprocess.call("./slice1.sh")
 
         r1 = canvas.create_rectangle(
             110, 23, 110+dimx, 23+dimy, fill="#4AFB2A", )
@@ -73,7 +82,7 @@ def button1_clicked():
                 512, 140, 512+dimx, 140, 512, 140+dimy, fill="#4AFB2A")
             rettangoli = [t71]  # store the square object in a list
             canvas.tag_lower(t71, image)
-
+        
         else:
             r71 = canvas.create_rectangle(
                 512, 140, 512+dimx, 140+dimy, fill="#4AFB2A", )
@@ -105,6 +114,13 @@ def button1_clicked():
         print("OFF 1")
         butt1 = 0
         button1["text"] = "ON 1"
+        
+        active_slices[0]=False
+        for i in range(len(active_slices)):
+            str_slice="./slice"
+            if active_slices[i]:
+                str_slice += str(i+1) + ".sh"
+                subprocess.call([str_slice, str(1)])
 
         label1.configure(text="Slice 1: non attivo")
 
@@ -152,7 +168,10 @@ def button2_clicked():
         print("ON 2")
         butt2 = 1
         button2["text"] = "OFF 2"
-
+        
+        active_slices[1]=True
+        subprocess.call("./slice2.sh")
+        
         label2.configure(text="Slice 2: attivo")
 
         r4 = canvas.create_rectangle(
@@ -179,6 +198,13 @@ def button2_clicked():
         print("OFF 2")
         butt2 = 0
         button2["text"] = "ON 2"
+        
+        active_slices[1]=False
+        for i in range(len(active_slices)):
+            str_slice="./slice"
+            if active_slices[i]:
+                str_slice += str(i+1) + ".sh"
+                subprocess.call([str_slice, str(1)])
 
         label2.configure(text="Slice 2: non attivo")
 
@@ -198,6 +224,9 @@ def button3_clicked():
         print("ON 3")
         butt3 = 1
         button3["text"] = "OFF 3"
+        
+        active_slices[2]=True
+        subprocess.call("./slice3.sh")
 
         label3.configure(text="Slice 3: attivo")
 
@@ -253,6 +282,13 @@ def button3_clicked():
         print("OFF 3")
         butt3 = 0
         button3["text"] = "ON 3"
+        
+        active_slices[2]=False
+        for i in range(len(active_slices)):
+            str_slice="./slice"
+            if active_slices[i]:
+                str_slice += str(i+1) + ".sh"
+                subprocess.call([str_slice, str(1)])
 
         label3.configure(text="Slice 3: non attivo")
 
@@ -298,6 +334,9 @@ def button4_clicked():
         print("ON 4")
         butt4 = 1
         button4["text"] = "OFF 4"
+        
+        active_slices[3]=True
+        subprocess.call("./slice4.sh")
 
         label4.configure(text="Slice 4: attivo")
 
@@ -346,6 +385,13 @@ def button4_clicked():
         butt4 = 0
 
         button4["text"] = "ON 4"
+        
+        active_slices[3]=False
+        for i in range(len(active_slices)):
+            str_slice="./slice"
+            if active_slices[i]:
+                str_slice += str(i+1) + ".sh"
+                subprocess.call([str_slice, str(1)])
 
         label4.configure(text="Slice 4: non attivo")
 
