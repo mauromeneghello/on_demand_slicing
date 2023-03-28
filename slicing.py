@@ -40,6 +40,8 @@ class TrafficSlicing(app_manager.RyuApp):
 	    3: {3:1, 4:1, 5:1, 3:2, 4:2, 5:2},
         }
         
+        self.gui_process = None
+        
 
 
     @set_ev_cls(ofp_event.EventOFPSwitchFeatures, CONFIG_DISPATCHER)
@@ -111,4 +113,5 @@ class TrafficSlicing(app_manager.RyuApp):
                     
     def inserimento(self):
         time.sleep(1)
+        
         subprocess.run(['python3', 'gui.py'])
