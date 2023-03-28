@@ -28,8 +28,10 @@ class TrafficSlicing(app_manager.RyuApp):
         
         
         self.print_flag = 0         # Helper variable that helps us with printing/output
-          
-        subprocess.run(['python3', 'gui.py'])
+        
+        self.threadd = threading.Thread(target=self.inserimento, args=())
+        self.threadd.daemon = True
+        self.threadd.start()
 
         # Source Mapping        
         self.port_to_port = {
@@ -105,3 +107,8 @@ class TrafficSlicing(app_manager.RyuApp):
                     match = datapath.ofproto_parser.OFPMatch(eth_dst=dst)
                     self.add_flow(datapath, 1, match, actions)
                     self._send_package(msg, datapath, in_port, actions)
+                    
+                    
+    def inserimento(self):
+        time.sleep(1)
+        subprocess.run(['python3', 'gui.py'])

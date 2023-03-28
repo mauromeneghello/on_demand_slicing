@@ -110,11 +110,13 @@ def button1_clicked():
             rettangoli = [r81]  # store the square object in a list
             canvas.tag_lower(r81, image)
 
+
     else:
         print("OFF 1")
         butt1 = 0
         button1["text"] = "ON 1"
         
+        subprocess.call("./initial_scenario.sh")
         active_slices[0]=False
         for i in range(len(active_slices)):
             str_slice="./slice"
@@ -199,6 +201,7 @@ def button2_clicked():
         butt2 = 0
         button2["text"] = "ON 2"
         
+        subprocess.call("./initial_scenario.sh")
         active_slices[1]=False
         for i in range(len(active_slices)):
             str_slice="./slice"
@@ -283,6 +286,7 @@ def button3_clicked():
         butt3 = 0
         button3["text"] = "ON 3"
         
+        subprocess.call("./initial_scenario.sh")
         active_slices[2]=False
         for i in range(len(active_slices)):
             str_slice="./slice"
@@ -386,6 +390,7 @@ def button4_clicked():
 
         button4["text"] = "ON 4"
         
+        subprocess.call("./initial_scenario.sh")
         active_slices[3]=False
         for i in range(len(active_slices)):
             str_slice="./slice"
