@@ -113,7 +113,7 @@ class TrafficSlicing(app_manager.RyuApp):
             active_slices = [False for _ in range(4)]
             while True:
                 time.sleep(1)
-                print("Inserisci: (es. ON 1, OFF 2)")
+                print("Inserisci: (ON/OFF 1-4)")
                 var = input()
                 splitString = var.split(" ")
                 status = splitString[0]
