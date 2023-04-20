@@ -63,9 +63,9 @@ $ sudo mn -c
 <a name="how-to-run-with-CLI"></a> 
 ## How to run: ## 
 1. Connect with a comnetsemu portale (recommended) or install all the functionalities in your system. 
-2. Switch to branch 'dev': 
+2. Switch to branch 'cli': 
 ```bash 
-$ git checkout dev 
+$ git checkout cli 
 ```
 3. Run the controller: 
 ```bash 
