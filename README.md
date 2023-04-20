@@ -37,23 +37,26 @@ This folder contains the following files:
 ## How to run: ## 
 1. Connect with a comnetsemu portale (recommended) or install all the functionalities in your system. 
 2. Switch to branch 'main': 
-bash 
-$ git checkout main 
+```bash 
+$ git checkout main
+```
 3. Run the controller (this will open the GUI): 
-bash 
+```bash 
 $ ryu-manager slicing.py 
+```
 4. Emulate the topology with mininet: 
-bash 
+```bash 
 $ sudo python3 topology.py 
+```
 5. Use the button in the graphic interface to activate or de-activate slices.  
  
 *Note 1:* Please stop the running Ryu controller before starting a new Ryu controller. 
  
 *Note 2:* When you want to stop the mininet, please delete the topology as follows: 
-bash 
+```bash 
 mininet> exit 
 $ sudo mn -c 
- 
+ ```
  
 # CLI 
  
@@ -61,14 +64,17 @@ $ sudo mn -c
 ## How to run: ## 
 1. Connect with a comnetsemu portale (recommended) or install all the functionalities in your system. 
 2. Switch to branch 'dev': 
-bash 
+```bash 
 $ git checkout dev 
+```
 3. Run the controller: 
-bash 
+```bash 
 $ ryu-manager slicing.py 
+```
 4. Emulate the topology with mininet: 
-bash 
+```bash 
 $ sudo python3 topology.py 
+```
 5. Insert ON and OFF command in the ryu controller tab 
  * write ON to activate all slices 
  * write ON N to activate only slice n (with N between 1 and 4) 
@@ -78,18 +84,21 @@ $ sudo python3 topology.py
 *Note 1:* Please stop the running Ryu controller before starting a new Ryu controller. 
  
 *Note 2:* When you want to stop the mininet, please delete the topology as follows: 
-bash 
+```bash 
 mininet> exit 
 $ sudo mn -c 
+```
 ## How to verify: 
 In order to verify the connectivity between hosts and the right functioning of the slices, chose one of these methods: 
 1. ping all hosts 
- bash 
- mininet> pingall 
+```bash 
+ mininet> pingall
+``` 
   or ping 2 hosts directly: 
- bash 
+ ```bash 
  mininet> h1 ping -c3 h7 
-   
+```   
 2. verifying flows in each switch and check the virtual queues/slices, e.g. 
- bash 
+```bash 
  mininet> sh ovs-ofctl dump-flows s1
+```
