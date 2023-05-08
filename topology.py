@@ -7,7 +7,7 @@ import subprocess
 
 
 class MyTopo( Topo ):
-    "Simple topology example."
+    "Topology definition."
 
     def build( self ):
         "Create custom topo."
