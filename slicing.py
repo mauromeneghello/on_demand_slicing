@@ -27,7 +27,6 @@ class TrafficSlicing(app_manager.RyuApp):
         }
         
         
-        self.print_flag = 0         # Helper variable that helps us with printing/output
         
         self.threadd = threading.Thread(target=self.inserimento, args=())
         self.threadd.daemon = True
